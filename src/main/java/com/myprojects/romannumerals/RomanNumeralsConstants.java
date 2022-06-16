@@ -15,7 +15,7 @@ public class RomanNumeralsConstants {
     /* Exception message for invalid Roman numerals in request parameters */
     public static final String ILLEGAL_ROMAN_NUMERAL_EXCEPTION_MESSAGE =
             "IllegalRequestParamException. Parameter provided is not a valid Roman Numeral number!";
-    /* Exception message for invalid Arabic numerals in request parameters */
+    /* Exception message for invalid integer values in request parameters */
     public static final String ILLEGAL_ARABIC_NUMERAL_EXCEPTION_MESSAGE =
             "IllegalRequestParamException. Parameter provided is not Arab Numeral between 1 and 3999!";
 

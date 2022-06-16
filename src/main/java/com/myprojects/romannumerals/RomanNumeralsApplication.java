@@ -2,9 +2,11 @@ package com.myprojects.romannumerals;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Springboot Application Main Class. The RomanNumerals Application offers a REST API for converting Roman numeral
+ * numbers to their Arabic numeral representation and vice versa.
+ */
 @SpringBootApplication
 public class RomanNumeralsApplication {
 

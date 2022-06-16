@@ -12,11 +12,23 @@ public class RomanNumeralService {
         //no-op
     }
 
-    public String generateRomanFromArabic(Integer arabic){
+    /**
+     * Convert an integer number to its Roman numeral representation.
+     *
+     * @param arabic int value to be converted to its Roman numeral representation.
+     * @return {@link String} reference containing the Roman numeral representation of the {@param arabic}.
+     */
+    public String convertToRoman(int arabic){
        return romanConverter.generate(arabic);
     }
 
-    public Integer generateArabicFromRoman(String roman){
+    /**
+     * Convert a Roman numeral number to its Arabic numeral representation.
+     *
+     * @param roman {@link String} reference to the Roman numeral number to be converted.
+     * @return int value of the converted Roman numeral number.
+     */
+    public int convertToArabic(String roman){
         return romanConverter.parse(roman);
     }
 }

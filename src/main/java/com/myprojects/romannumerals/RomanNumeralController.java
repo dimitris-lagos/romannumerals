@@ -28,10 +28,11 @@ public class RomanNumeralController implements IRomanNumeralController {
      */
     @Override
     @GetMapping(value = "/generate")
-    public ResponseEntity<String> generate(Integer arab) {
-        romanNumeralValidator.validateIsBoundedInteger(arab);
-        return new ResponseEntity<>(romanNumeralService.generateRomanFromArabic(arab), HttpStatus.OK);
+    public ResponseEntity<String> generate(int arabic) {
+        romanNumeralValidator.validateIsBoundedInteger(arabic);
+        return new ResponseEntity<>(romanNumeralService.convertToRoman(arabic), HttpStatus.OK);
     }
+
 
     /**
      * {@inheritDoc}
@@ -40,7 +41,7 @@ public class RomanNumeralController implements IRomanNumeralController {
     @GetMapping(value = "/parse")
     public ResponseEntity<Object> parse(String roman) {
         romanNumeralValidator.validateIsRomanNumeral(roman);
-        return new ResponseEntity<>(romanNumeralService.generateArabicFromRoman(roman), HttpStatus.OK);
+        return new ResponseEntity<>(romanNumeralService.convertToArabic(roman), HttpStatus.OK);
     }
 
 }

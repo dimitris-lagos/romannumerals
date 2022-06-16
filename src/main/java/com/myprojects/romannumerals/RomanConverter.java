@@ -4,17 +4,17 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Class that implements the Business Logic for the Roman Numerals to Arabic Numerals and vice versa conversion.
+ * Class that implements the Business Logic for the Roman Numerals to integer numbers and vice versa conversion.
  */
 public class RomanConverter implements IRomanNumeralGenerator {
 
-    /* maps the Arabic numeral digit in the hundreds place of the number to the equivalent Roman numeral */
+    /* maps the digit in the hundreds place of the number to the equivalent Roman numeral */
     private final Map<Integer,String> hundredsMap;
-    /* maps the Arabic numeral digit in the tens place of the number to the equivalent Roman numeral */
+    /* maps the digit in the tens place of the number to the equivalent Roman numeral */
     private final Map<Integer,String> tensMap;
-    /* maps the Arabic numeral digit in the units place of the number to the equivalent Roman numeral */
+    /* maps the digit in the units place of the number to the equivalent Roman numeral */
     private final Map<Integer,String> unitsMap;
-    /* maps all the Roman numeral numbers between 1 and 3999 to the equivalent Arabic numeral number */
+    /* maps all the Roman numeral numbers between 1 and 3999 to the equivalent integer number */
     private final Map<String,Integer> romanArabicMap;
 
     public RomanConverter() {
@@ -25,8 +25,8 @@ public class RomanConverter implements IRomanNumeralGenerator {
         unitsMap = generateUnitsMap();
         romanArabicMap = generateRomanArabicMap();
 
-
     }
+
     /**
      * {@inheritDoc}
      */
@@ -91,7 +91,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
     }
 
     /*
-     * Method to get the Roman numeral in the tens place of the given Arabic numeral number.
+     * Method to get the Roman numeral in the tens place of the given integer number.
      *
      * @param number the int number to get its tens place digit converted to the equivalent Roman numeral.
      * @return String that contains the Roman Numeral for the tens place.
@@ -105,7 +105,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
     }
 
     /*
-     * Method to get the Roman numeral in the units place of the given Arabic numeral number.
+     * Method to get the Roman numeral in the units place of the given integer number.
      *
      * @param number the int number to get its units place digit converted to the equivalent Roman numeral.
      * @return String that contains the Roman Numeral for the units place.
@@ -115,10 +115,21 @@ public class RomanConverter implements IRomanNumeralGenerator {
         return unitsMap.get(unit);
     }
 
+    /*
+     * Generate the Map that will serve as the application's data model for the parsing of Roman numerals from
+     * I(1) to MMMCMXCIX(3999).
+     *
+     * @return {@code Map<String,Integer>} that contains entries that map the Roman numeral representation
+     * to the corresponding integer.
+     */
     private Map<String,Integer> generateRomanArabicMap(){
-        LinkedHashMap<String,Integer> romanDecimalMap = new LinkedHashMap<>(RomanNumeralsConstants.UPPER_BOUND);
-        for (int counter = RomanNumeralsConstants.LOWER_BOUND; counter <= RomanNumeralsConstants.UPPER_BOUND; counter++){
-            romanDecimalMap.put(convertArabicToRoman(counter),counter);
+        /* instantiate a Map with 3999 Entries */
+        Map<String,Integer> romanDecimalMap = new HashMap<>(RomanNumeralsConstants.UPPER_BOUND);
+        /* iterate integer numbers from 1 to 3999 */
+        for (int intNumber = RomanNumeralsConstants.LOWER_BOUND; intNumber <= RomanNumeralsConstants.UPPER_BOUND; intNumber++){
+            /* generate the Roman numeral representation of the value and put it in the Map as the Key along with
+            * the intNumber as the Value*/
+            romanDecimalMap.put(convertArabicToRoman(intNumber),intNumber);
         }
         return romanDecimalMap;
     }

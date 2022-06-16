@@ -1,7 +1,6 @@
 package com.myprojects.romannumerals;
 
 import org.springframework.stereotype.Service;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +21,7 @@ public class RomanNumeralValidator {
      * @param requestParameter reference to the request parameter.
      * @throws IllegalRequestParamException if {@param requestParameter} is not between 1 and 3999.
      */
-    public void validateIsBoundedInteger(Integer requestParameter) throws IllegalRequestParamException{
+    public void validateIsBoundedInteger(int requestParameter) throws IllegalRequestParamException{
         if (!isBounded(requestParameter)){
             throw new IllegalRequestParamException(RomanNumeralsConstants.ILLEGAL_ARABIC_NUMERAL_EXCEPTION_MESSAGE);
         }
@@ -47,7 +46,7 @@ public class RomanNumeralValidator {
 
     }
 
-    private boolean isBounded(Integer requestParameter){
+    private boolean isBounded(int requestParameter){
         return  (requestParameter >= RomanNumeralsConstants.LOWER_BOUND
                 && requestParameter <= RomanNumeralsConstants.UPPER_BOUND);
     }

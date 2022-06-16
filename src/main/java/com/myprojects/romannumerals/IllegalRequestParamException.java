@@ -1,18 +1,12 @@
 package com.myprojects.romannumerals;
 
+/**
+ * Custom Exception implementation for declaring illegal input parameters on the applications Endpoint Controller.
+ */
 public class IllegalRequestParamException extends IllegalArgumentException{
-    public IllegalRequestParamException() {
-    }
 
     public IllegalRequestParamException(String s) {
         super(s);
     }
 
-    public IllegalRequestParamException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public IllegalRequestParamException(Throwable cause) {
-        super(cause);
-    }
 }
