@@ -39,7 +39,7 @@ public class RomanNumeralValidator {
      */
     public void validateIsRomanNumeral(String requestParameter) throws IllegalRequestParamException{
         Matcher romanMatcher = ROMAN_NUMERAL_PATTERN.matcher(requestParameter);
-        if (!romanMatcher.find()){
+        if ( "".equals(requestParameter) || !romanMatcher.find()){
             throw new IllegalRequestParamException(RomanNumeralsConstants.ILLEGAL_ROMAN_NUMERAL_EXCEPTION_MESSAGE);
         }
 
