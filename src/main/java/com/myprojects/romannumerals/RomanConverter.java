@@ -16,6 +16,8 @@ public class RomanConverter implements IRomanNumeralGenerator {
     private final Map<Integer,String> unitsMap;
     /* maps all the Roman numeral numbers between 1 and 3999 to the equivalent integer number */
     private final Map<String,Integer> romanArabicMap;
+    /* initial capacity for the digits Maps */
+    private static final int MAP_CAPACITY = 10;
 
     public RomanConverter() {
 
@@ -123,7 +125,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
      * to the corresponding integer.
      */
     private Map<String,Integer> generateRomanArabicMap(){
-        /* instantiate a Map with 3999 Entries */
+        /* instantiate a Map with capacity 3999 and default load factor to avoid rehashing */
         Map<String,Integer> romanDecimalMap = new HashMap<>(RomanNumeralsConstants.UPPER_BOUND);
         /* iterate integer numbers from 1 to 3999 */
         for (int intNumber = RomanNumeralsConstants.LOWER_BOUND; intNumber <= RomanNumeralsConstants.UPPER_BOUND; intNumber++){
@@ -136,7 +138,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
 
 
     private Map<Integer,String> generateHundredsMap(){
-        Map<Integer,String> hundredsMap = new HashMap<>();
+        Map<Integer,String> hundredsMap = new HashMap<>(MAP_CAPACITY);
         hundredsMap.put(0,"");
         hundredsMap.put(1,"C");
         hundredsMap.put(2,"CC");
@@ -151,7 +153,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
     }
 
     private Map<Integer,String> generateTensMap(){
-        Map<Integer,String> tensMap = new HashMap<>();
+        Map<Integer,String> tensMap = new HashMap<>(MAP_CAPACITY);
         tensMap.put(0,"");
         tensMap.put(1,"X");
         tensMap.put(2,"XX");
@@ -166,7 +168,7 @@ public class RomanConverter implements IRomanNumeralGenerator {
     }
 
     private Map<Integer, String> generateUnitsMap(){
-        Map<Integer,String> unitsMap = new HashMap<>();
+        Map<Integer,String> unitsMap = new HashMap<>(MAP_CAPACITY);
         unitsMap.put(0,"");
         unitsMap.put(1,"I");
         unitsMap.put(2,"II");

@@ -43,6 +43,14 @@ public class RomanNumeralValidatorUnitTest {
     }
 
     /**
+     * Testcase for repeating Roman numeral input String
+     */
+    @Test(expected = IllegalRequestParamException.class)
+    public void givenRepeatingRomanNumeralInput_thenIllegalRequestParamExceptionThrown(){
+        romanNumeralValidator.validateIsRomanNumeral("CDCD");
+    }
+
+    /**
      * Testcase for lower-case Roman numeral input String
      */
     @Test(expected = IllegalRequestParamException.class)
